@@ -1,8 +1,9 @@
 import React from "react";
+import classes from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
-    <nav className="nav">
+    <nav className={classes.nav}>
       <div>
         <a href="#">Profile</a>
       </div>
