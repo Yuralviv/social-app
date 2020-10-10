@@ -4,13 +4,13 @@ import classes from "./MyPost.module.css";
 
 const MyPost = () => {
   return (
-    <div>
+    <div className={classes.postsBlock}>
       Post
-      <div>
+      <div className={classes.posts}>
         <textarea></textarea>
         <button>add post </button>
       </div>
-      <Post />
+      <Post message='hi post' />
     </div>
   );
 };
