@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Dialogs from "./components/dialogs/Dialogs";
 import Header from "./components/header/Header";
 import Navigation from "./components/navigation/Navigation";
 import Profile from "./components/profile/Profile";
@@ -9,7 +10,8 @@ function App() {
     <div className="app-wrapper">
       <Header />
       <Navigation />
-      <Profile />
+      {/* <Profile /> */}
+      <Dialogs/>
     </div>
   );
 }
