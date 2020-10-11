@@ -9,14 +9,14 @@ import Profile from "./components/profile/Profile";
 const App = () => {
   return (
     <div className="app-wrapper">
-      <Header />
-      <NavBar />
-      <div className="app-wrapper-content">
-        <BrowserRouter>
+      <BrowserRouter>
+        <Header />
+        <NavBar />
+        <div className="app-wrapper-content">
           <Route path="/dialogs" component={Dialogs} />
           <Route path="/profile" component={Profile} />
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
     </div>
   );
 };
