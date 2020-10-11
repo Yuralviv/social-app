@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./Navigation.module.css";
+import classes from "./NavBar.module.css";
 
-const Navigation = () => {
+const NavBar = () => {
   return (
     <nav className={classes.nav}>
       <div>
@@ -23,4 +23,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default NavBar;
