@@ -5,27 +5,35 @@ import classes from "./NavBar.module.css";
 const NavBar = () => {
   return (
     <nav className={classes.nav}>
-      <div className={classes.item}>
-        <NavLink to="/profile" activeClassName={classes.activeLink}>
-          Profile
-        </NavLink>
-      </div>
-      <div className={`${classes.item} ${classes.active}`}>
-        <NavLink to="/dialogs" activeClassName={classes.activeLink}>
-          Messages
-        </NavLink>
-      </div>
-      <div className={`${classes.item} ${classes.active}`}>
-        <NavLink to="/users" activeClassName={classes.activeLink}>
-          Users
-        </NavLink>
-      </div>
+      <ul className={classes.item}>
+        <li>
+          <NavLink to="/profile" activeClassName={classes.activeLink}>
+            Profile
+          </NavLink>
+        </li>
 
-      <div className={classes.item}>
-        <a>News</a>
-      </div>
-      <div className={classes.item}>##</div>
-      <div className={classes.item}>##</div>
+        <li className={`${classes.item} ${classes.active}`}>
+          <NavLink to="/dialogs" activeClassName={classes.activeLink}>
+            Messages
+          </NavLink>
+        </li>
+        <li className={`${classes.item} ${classes.active}`}>
+          <NavLink to="/news" activeClassName={classes.activeLink}>
+            News
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink to="/music" activeClassName={classes.activeLink}>
+            Music
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/settings" activeClassName={classes.activeLink}>
+            Settings
+          </NavLink>
+        </li>
+      </ul>
     </nav>
   );
 };

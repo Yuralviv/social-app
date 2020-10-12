@@ -3,8 +3,12 @@
     background: #9966ff;
   }
   
-  .header img {
-    width: 50px;
-    height: 50px;
+  .header .logo {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 25px;
+    color: #ffffff;
+    margin: 8px;
+    font-weight: 500;
   }
-  
