@@ -3,11 +3,22 @@
   background: #9966ff;
 }
 
+.item li {
+  list-style: none;
+  margin-bottom: 15px;
+}
+
 .item a {
-  color: white;
+  font-size: 20px;
+  font-weight: 550;
+  color: #14001a;
   text-decoration: none;
 }
 
+.item a:hover {
+  color: #ffffff;
+}
+
 .item a.activeLink {
-  color: gold;
+  color: #ffd700;
 }
