@@ -1,16 +1,15 @@
 import React from "react";
-import Post from "../post/Post"
+import Post from "../post/Post";
 import classes from "./MyPost.module.css";
 
-const MyPost = () => {
+const MyPost = (postsElements) => {
   return (
     <div className={classes.postsBlock}>
-      Post
+      <h3>My posts</h3>
+      {/* <AddPostForm onSubmit={onAddPost}/> */}
       <div className={classes.posts}>
-        <textarea></textarea>
-        <button>add post </button>
+        <Post />
       </div>
-      <Post message='hi post' />
     </div>
   );
 };
