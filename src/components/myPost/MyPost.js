@@ -8,7 +8,6 @@ const MyPost = ({ id, post, likesCount }) => {
     (state) => state.profileReducer.posts,
     shallowEqual
   );
-  console.log(postList);
   const postElements = postList.map((p) => (
     <Post key={p.id} post={p.post} likesCount={p.likesCount} />
   ));

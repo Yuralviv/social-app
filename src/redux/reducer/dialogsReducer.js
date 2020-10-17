@@ -1,3 +1,5 @@
+import * as types from "../action/ActionTypes";
+
 const initialState = {
   dialogs: [
     { id: 1, name: "Dimych" },
@@ -15,12 +17,12 @@ const initialState = {
   ],
 };
 
-const dialogsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "SN/DIALOGS/SEND_MESSAGE":
+const dialogsReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case SEND_MESSAGE:
       return {
         ...state,
-        messages: [...state.messages, { id: 6, message: action.payload }],
+        messages: [...state.messages, { id: 6, message: payload }],
       };
     default:
       return state;
