@@ -19,7 +19,7 @@ const initialState = {
 
 const dialogsReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case SEND_MESSAGE:
+    case types.SEND_MESSAGE:
       return {
         ...state,
         messages: [...state.messages, { id: 6, message: payload }],
