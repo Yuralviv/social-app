@@ -1,15 +1,21 @@
 import React from "react";
+import { shallowEqual, useSelector } from "react-redux";
 import Post from "../post/Post";
 import classes from "./MyPost.module.css";
 
-const MyPost = (postsElements) => {
+const MyPost = ({ id, post, likesCount }) => {
+  const postList = useSelector(
+    (state) => state.profileReducer.posts,
+    shallowEqual
+  );
+  console.log(postList);
+  const postElements = postList.map((p) => (
+    <Post key={p.id} post={p.post} likesCount={p.likesCount} />
+  ));
   return (
     <div className={classes.postsBlock}>
       <h3>My posts</h3>
-      {/* <AddPostForm onSubmit={onAddPost}/> */}
-      <div className={classes.posts}>
-        <Post />
-      </div>
+      <div className={classes.posts}>{postElements}</div>
     </div>
   );
 };
