@@ -6,27 +6,15 @@ import Header from "./components/header/Header";
 import NavBar from "./components/NavBar/NavBar";
 import Profile from "./components/profile/Profile";
 
-const App = (props) => {
+const App = () => {
   return (
     <div className="app-wrapper">
       <BrowserRouter>
         <Header />
         <NavBar />
         <div className="app-wrapper-content">
-          <Route
-            exact
-            path="/dialogs"
-            render={() => {
-              <Dialogs />;
-            }}
-          />
-          <Route
-            exact
-            path="/profile"
-            render={() => {
-              <Profile />;
-            }}
-          />
+          <Route exact path="/dialogs" component={Dialogs} />
+          <Route exact path="/profile" component={Profile} />
         </div>
       </BrowserRouter>
     </div>
