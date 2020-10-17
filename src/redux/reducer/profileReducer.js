@@ -1,19 +1,21 @@
+import * as types from "../action/ActionTypes";
+
 const initialState = {
   posts: [
-    { id: 1, message: "Hi, how are you?", likesCount: 12 },
-    { id: 2, message: "It's my first post", likesCount: 11 },
-    { id: 3, message: "Blabla", likesCount: 11 },
-    { id: 4, message: "Dada", likesCount: 11 },
+    { id: 1, post: "Hi, how are you?", likesCount: 12 },
+    { id: 2, post: "It's my first post", likesCount: 11 },
+    { id: 3, post: "Blabla", likesCount: 11 },
+    { id: 4, post: "Dada", likesCount: 11 },
   ],
   status: "",
 };
 
-const profileReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "SN/PROFILE/ADD-POST": {
-      let newPost = {
+const profileReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case types.ADD_POST: {
+      const newPost = {
         id: 5,
-        message: action.newPostText,
+        post: payload,
         likesCount: 0,
       };
       return {
@@ -21,24 +23,24 @@ const profileReducer = (state = initialState, action) => {
         posts: [...state.posts, newPost],
       };
     }
-    case "SN/PROFILE/SET_STATUS": {
+    case types.SET_STATUS: {
       return {
         ...state,
-        status: action.status,
+        status: payload,
       };
     }
-    case "SN/PROFILE/SET_USER_PROFILE": {
-      return { ...state, profile: action.profile };
+    case types.SET_USER_PROFILE: {
+      return { ...state, profile: payload };
     }
 
-    case "SN/PROFILE/DELETE_POST":
+    case types.DELETE_POST:
       return {
         ...state,
         // posts: state.posts.filter((p) => p.id != action.postId),
       };
 
-    case "SN/PROFILE/SAVE_PHOTO_SUCCESS":
-      return { ...state, profile: { ...state.profile, photos: action.photos } };
+    case types.SAVE_PHOTO_SUCCESS:
+      return { ...state, profile: { ...state.profile, photos: payload } };
     default:
       return state;
   }
