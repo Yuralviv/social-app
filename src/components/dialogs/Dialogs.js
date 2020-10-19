@@ -5,10 +5,12 @@ import DialogsMessage from "./dialogsMessage/DialogsMessage";
 import { useSelector, shallowEqual } from "react-redux";
 
 const Dialogs = ({ id, message, name }) => {
+  
   const dialogsList = useSelector(
     (state) => state.dialogsReducer.dialogs,
     shallowEqual
   );
+
   const messageList = useSelector(
     (state) => state.dialogsReducer.messages,
     shallowEqual
@@ -17,6 +19,7 @@ const Dialogs = ({ id, message, name }) => {
   const dialogsElements = dialogsList.map((d) => (
     <DialogsItem name={d.name} key={d.id} id={d.id} />
   ));
+
   const messagesElements = messageList.map((m) => (
     <DialogsMessage message={m.message} key={m.id} />
   ));

@@ -13,7 +13,6 @@ const initialState = {
     { id: 2, message: "How is your it-kamasutra?" },
     { id: 3, message: "Yo" },
     { id: 4, message: "Yo" },
-    { id: 5, message: "Yo" },
   ],
 };
 
