@@ -6,11 +6,14 @@ import classes from "./Users.module.css";
 
 const UserItem = ({ user, fullname, status, followed, location }) => {
   const dispatch = useDispatch();
+
+  const userPtoto = user.photos.small != null ? user.photos.small : userPhoto;
+
   return (
     <div>
       <span>
         <div>
-          <img className={classes.userPhoto} src={userPhoto} />
+          <img className={classes.userPhoto} src={userPhoto} alt='#' />
         </div>
         <div>
           {followed ? (
@@ -36,10 +39,6 @@ const UserItem = ({ user, fullname, status, followed, location }) => {
         <span>
           <div>{fullname}</div>
           <div>{status}</div>
-        </span>
-        <span>
-          <div>{location.country}</div>
-          <div>{location.city}</div>
         </span>
       </span>
     </div>
