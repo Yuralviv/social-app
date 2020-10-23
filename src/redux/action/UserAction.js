@@ -24,3 +24,8 @@ export const setTotalUserCount = (totalUsersCount) => ({
   type: types.SET_TOTAL_USERS_COUNT,
   totalUsersCount,
 });
+
+export const toggleFetch = (isFetching) => ({
+  type: types.TOGGLEFETCH,
+  isFetching,
+});
