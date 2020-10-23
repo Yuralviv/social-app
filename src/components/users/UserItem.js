@@ -13,7 +13,7 @@ const UserItem = ({ user, fullname, status, followed, location }) => {
     <div>
       <span>
         <div>
-          <img className={classes.userPhoto} src={userPhoto} alt='#' />
+          <img className={classes.userPhoto} src={userPtoto} alt='#' />
         </div>
         <div>
           {followed ? (

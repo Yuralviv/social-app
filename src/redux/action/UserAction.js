@@ -14,3 +14,13 @@ export const setUsers = (users) => ({
   type: types.SET_USERS,
   users,
 });
+
+export const setCurrentPage = (currentPage) => ({
+  type: types.SET_CURRENT_PAGE,
+  currentPage,
+});
+
+export const setTotalUserCount = (totalUsersCount) => ({
+  type: types.SET_TOTAL_USERS_COUNT,
+  totalUsersCount,
+});

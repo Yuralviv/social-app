@@ -1,36 +1,10 @@
 import * as types from "../action/ActionTypes";
 
 const initialState = {
-  users: [
-    // {
-    //   id: 1,
-    //   followed: true,
-    //   fullname: "Roma",
-    //   status: "i`m boss",
-    //   location: { country: "UA", city: "lviv" },
-    // },
-    // {
-    //   id: 2,
-    //   followed: false,
-    //   fullname: "Yura",
-    //   status: "fullstack",
-    //   location: { country: "UA", city: "lviv" },
-    // },
-    // {
-    //   id: 3,
-    //   followed: true,
-    //   fullname: "Petro",
-    //   status: "pyrhon dev",
-    //   location: { country: "UA", city: "lviv" },
-    // },
-    // {
-    //   id: 4,
-    //   followed: true,
-    //   fullname: "Dimych",
-    //   status: "_zar_",
-    //   location: { country: "UA", city: "lviv" },
-    // },
-  ],
+  users: [],
+  pageSize: 10,
+  totalUsersCount: 10,
+  currentPage: 1,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -58,7 +32,15 @@ const userReducer = (state = initialState, action) => {
     }
 
     case types.SET_USERS: {
-      return { ...state, users: [...state.users, ...action.users] };
+      return { ...state, users: action.users };
+    }
+
+    case types.SET_CURRENT_PAGE: {
+      return { ...state, currentPage: action.currentPage };
+    }
+
+    case types.SET_TOTAL_USERS_COUNT: {
+      return { ...state, totalUsersCount: action.totalUsersCount };
     }
 
     default: {
