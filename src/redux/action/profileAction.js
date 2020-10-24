@@ -5,22 +5,22 @@ export const addPost = (payload) => ({
   payload,
 });
 
-export const addPost = (payload) => ({
+export const SET_STATUS = (payload) => ({
   type: types.SET_STATUS,
   payload,
 });
 
-export const addPost = (id) => ({
+export const setUserProfile = (profile) => ({
   type: types.SET_USER_PROFILE,
-  id,
+  profile,
 });
 
-export const addPost = (payload) => ({
+export const deletePost = (payload) => ({
   type: types.DELETE_POST,
   payload,
 });
 
-export const addPost = (payload) => ({
+export const savePhotoSuccess = (payload) => ({
   type: types.SAVE_PHOTO_SUCCESS,
   payload,
 });
