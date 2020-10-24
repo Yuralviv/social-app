@@ -69,7 +69,7 @@ const UsersList = () => {
   }
 
   const userElements = userList.map((u) => (
-    <UserItem key={u.id} user={u} followed={u.followed} fullname={u.name} />
+    <UserItem key={u.id} id={u.id} user={u} followed={u.followed} fullname={u.name} />
   ));
 
   const checkLoader = isFetching ? <Spinner /> : null;
