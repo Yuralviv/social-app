@@ -17,7 +17,7 @@ const App = () => {
           <Route exact path="/dialogs" component={Dialogs} />
           <Route
             exact
-            path="/profile"
+            path="/profile/:id" 
             render={() => <Profile />} />
           <Route exact path="/users" component={UsersList} />
         </div>

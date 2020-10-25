@@ -29,3 +29,4 @@ export const toggleFetch = (isFetching) => ({
   type: types.TOGGLEFETCH,
   isFetching,
 });
+
