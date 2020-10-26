@@ -1,12 +1,38 @@
-import React from "react";
-import classes  from "./Header.module.css";
+import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import * as axios from "axios";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { setUserData } from "../../redux/action/authAction";
+
+import classes from "./Header.module.css";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const isAuth = useSelector((state) => state.authReducer.isAuth, shallowEqual);
+
+  const login = useSelector((state) => state.authReducer.login, shallowEqual);
+
+  useEffect(() => {
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/auth/me", {
+        withCredentials: true,
+      })
+      .then((response) => {
+        if (response.data.resultCode === 0) {
+          dispatch(setUserData(response.data.data));
+        }
+      });
+  });
+
   return (
     <header className={classes.header}>
-      <h3 className={classes.logo}>
-         Social-App 
-      </h3>
+      <div>
+        <h3 className={classes.logo}>Social-App</h3>
+      </div>
+      <div className={classes.login}>
+        {isAuth ? login : <NavLink to={"/login"}>login</NavLink>}
+      </div>
     </header>
   );
 };

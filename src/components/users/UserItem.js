@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import {
   followAction,
-  idUser,
   unfollowAction,
 } from "../../redux/action/UserAction";
 import userPhoto from "../../assets/image/user.png";

@@ -15,11 +15,14 @@ const Profile = () => {
     shallowEqual
   );
 
-  const { id } = useParams();
+  const userId = useParams();
 
   useEffect(() => {
+    if (!userId) {
+      userId = 2;
+    }
     axios
-      .get("https://social-network.samuraijs.com/api/1.0/profile/" + id)
+      .get("https://social-network.samuraijs.com/api/1.0/profile/" + userId.id)
       .then((response) => {
         dispatch(setUserProfile(response.data));
       });

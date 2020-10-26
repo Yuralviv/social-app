@@ -19,3 +19,6 @@ export const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 
 //preloader
 export const TOGGLEFETCH = "TOGGLEFETCH";
+
+//auth
+export const SET_USER_DATA = "SET_USER_DATA";
