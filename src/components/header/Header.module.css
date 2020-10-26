@@ -1,14 +1,25 @@
 .header {
-    grid-area: header;
-    background: #9966ff;
-  }
-  
-  .header .logo {
-    position: absolute;
-    top: 10px;
-    left: 15px;
-    font-size: 25px;
-    color: #ffd700;
-    margin: 8px;
-    font-weight: 500;
-  }
+  display: flex;
+  grid-area: header;
+  background: #9966ff;
+  justify-content: space-between;
+}
+
+.header .logo {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 25px;
+  color: #ffd700;
+  margin: 8px;
+  font-weight: 500;
+}
+
+.login {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 18px;
+  color: #ffd700;
+  margin: 8px;
+}
