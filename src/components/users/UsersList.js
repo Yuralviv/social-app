@@ -10,6 +10,7 @@ import {
 } from "../../redux/action/UserAction";
 import classes from "./Users.module.css";
 import Spinner from "../common/Loader";
+import { getUsers, getUsersPage } from "../../api/users-api";
 
 const UsersList = () => {
   const userList = useSelector((state) => state.userReducer.users);
@@ -38,29 +39,23 @@ const UsersList = () => {
 
   useEffect(() => {
     dispatch(toggleFetch(true));
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=${pageSize}`
-      )
-      .then((response) => {
-        dispatch(toggleFetch(false));
-        dispatch(setUsers(response.data.items));
-        dispatch(setTotalUserCount(response.data.totalCount));
-      });
+    getUsers(currentPage, pageSize).then((data) => {
+      dispatch(toggleFetch(false));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUserCount(data.totalCount));
+    });
   }, []);
 
   const onPageChanged = (pageNumber) => {
     dispatch(setCurrentPage(pageNumber));
     dispatch(toggleFetch(true));
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${pageSize}`
-      )
-      .then((response) => {
+    
+    getUsersPage(pageNumber, pageSize)
+      .then((data) => {
         dispatch(toggleFetch(false));
-        dispatch(setUsers(response.data.items));
-      });
-  };
+        dispatch(setUsers(data.items));
+      })
+  }
 
   const pagesCount = Math.ceil(totalUsersCount / pageSize);
   const pages = [];
@@ -69,7 +64,13 @@ const UsersList = () => {
   }
 
   const userElements = userList.map((u) => (
-    <UserItem key={u.id} id={u.id} user={u} followed={u.followed} fullname={u.name} />
+    <UserItem
+      key={u.id}
+      id={u.id}
+      user={u}
+      followed={u.followed}
+      fullname={u.name}
+    />
   ));
 
   const checkLoader = isFetching ? <Spinner /> : null;
