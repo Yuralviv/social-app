@@ -5,6 +5,7 @@ import { followAction, unfollowAction } from "../../redux/action/UserAction";
 import * as axios from "axios";
 import userPhoto from "../../assets/image/user.png";
 import classes from "./Users.module.css";
+import { unfollowApi, followApi } from "../../api/users-api";
 
 const UserItem = ({ user, id, fullname, status, followed }) => {
   const dispatch = useDispatch();
@@ -23,18 +24,9 @@ const UserItem = ({ user, id, fullname, status, followed }) => {
           {followed ? (
             <button
               onClick={() => {
-                axios
-                  .delete(
-                    `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                    {
-                      withCredentials: true,
-                      headers: {
-                        "API-KEY": "d968498d-d55e-428b-97bf-90a5c51321bb",
-                      },
-                    }
-                  )
-                  .then((response) => {
-                    if (response.data.resultCode === 0) {
+                unfollowApi(user.id)
+                  .then((data) => {
+                    if (data.resultCode === 0) {
                       dispatch(unfollowAction(user.id));
                     }
                   });
@@ -45,19 +37,9 @@ const UserItem = ({ user, id, fullname, status, followed }) => {
           ) : (
             <button
               onClick={() => {
-                axios
-                  .post(
-                    `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
-                    {},
-                    {
-                      withCredentials: true,
-                      headers: {
-                        "API-KEY": "d968498d-d55e-428b-97bf-90a5c51321bb",
-                      },
-                    }
-                  )
-                  .then((response) => {
-                    if (response.data.resultCode === 0) {
+                followApi(user.id)
+                  .then((data) => {
+                    if (data.resultCode === 0) {
                       dispatch(followAction(user.id));
                     }
                   });
