@@ -1,25 +1,32 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { shallowEqual, useSelector } from "react-redux";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+import Login from "./components/auth/login";
 import Dialogs from "./components/dialogs/Dialogs";
 import Header from "./components/header/Header";
 import NavBar from "./components/navBar/NavBar";
 import Profile from "./components/profile/Profile";
 import UsersList from "./components/users/UsersList";
+import PrivateRoute from "./guard/authRedirect";
 
 const App = () => {
+
+  const isAuth = useSelector((state) => state.authReducer.isAuth, shallowEqual);
+
+
   return (
     <div className="app-wrapper">
       <BrowserRouter>
         <Header />
         <NavBar />
         <div className="app-wrapper-content">
-          <Route exact path="/dialogs" component={Dialogs} />
-          <Route
-            exact
-            path="/profile/:id" 
-            render={() => <Profile />} />
-          <Route exact path="/users" component={UsersList} />
+          <Switch>
+            <PrivateRoute auth={isAuth} exact path="/dialogs" component={Dialogs} />
+            <PrivateRoute auth={isAuth} exact path="/profile/:id" component={Profile} />
+            <PrivateRoute auth={isAuth} exact path="/users" component={UsersList} />
+            <Route  exact path="/login/" component={Login} />
+          </Switch>
         </div>
       </BrowserRouter>
     </div>
