@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { followAction, unfollowAction } from "../../redux/action/UserAction";
-import * as axios from "axios";
 import userPhoto from "../../assets/image/user.png";
 import classes from "./Users.module.css";
 import { unfollowApi, followApi } from "../../api/users-api";

@@ -13,6 +13,8 @@ import Spinner from "../common/Loader";
 import { getUsers, getUsersPage } from "../../api/users-api";
 
 const UsersList = () => {
+  const dispatch = useDispatch();
+
   const userList = useSelector((state) => state.userReducer.users);
 
   const pageSize = useSelector(
@@ -35,7 +37,6 @@ const UsersList = () => {
     shallowEqual
   );
 
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(toggleFetch(true));
