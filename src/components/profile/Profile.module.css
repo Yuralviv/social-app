@@ -1,5 +1,12 @@
 .content {
     grid-area: content;
-    background: yellow;
+    background: cornflowerblue;
+  }
+  
+
+  .content img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
   }
   

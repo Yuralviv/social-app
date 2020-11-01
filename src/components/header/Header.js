@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
-import * as axios from "axios";
+import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { setUserData } from "../../redux/action/authAction";
-
 import classes from "./Header.module.css";
+import { NavLink } from "react-router-dom";
+
+import { setUserData } from "../../redux/action/authAction";
 import { authAPI } from "../../api/auth-api";
 
 const Header = () => {
@@ -15,7 +14,7 @@ const Header = () => {
   const login = useSelector((state) => state.authReducer.login, shallowEqual);
 
   useEffect(() => {
-    authAPI.me().then(({ data }) => {
+    authAPI.me().then((data) => {
       if (data.resultCode === 0) {
         dispatch(setUserData(data.data));
       }
