@@ -10,23 +10,21 @@ import classes from "./Profile.module.css";
 const Profile = () => {
   const dispatch = useDispatch();
 
-  const profile = useSelector(
-    (state) => state.profileReducer.profile,
-    shallowEqual
-  );
-
+  const profile = useSelector((state) => state.profile.profile, shallowEqual);
   const userId = useParams();
 
   useEffect(() => {
     if (!userId.id) {
+      userId.id = 11823;
     }
-    userId.id = 11823;
     axios
       .get("https://social-network.samuraijs.com/api/1.0/profile/" + userId.id)
       .then((response) => {
         dispatch(setUserProfile(response.data));
       });
   }, []);
+
+  console.log(profile);
 
   return (
     <div className={classes.content}>

@@ -9,9 +9,9 @@ import { authAPI } from "../../api/auth-api";
 const Header = () => {
   const dispatch = useDispatch();
 
-  const isAuth = useSelector((state) => state.authReducer.isAuth, shallowEqual);
+  const isAuth = useSelector((state) => state.auth.isAuth, shallowEqual);
 
-  const login = useSelector((state) => state.authReducer.login, shallowEqual);
+  const login = useSelector((state) => state.auth.login, shallowEqual);
 
   useEffect(() => {
     authAPI.me().then((data) => {

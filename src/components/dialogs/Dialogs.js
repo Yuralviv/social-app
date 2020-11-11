@@ -6,12 +6,12 @@ import { useSelector, shallowEqual } from "react-redux";
 
 const Dialogs = (props) => {
   const dialogsList = useSelector(
-    (state) => state.dialogsReducer.dialogs,
+    (state) => state.dialogs.dialogs,
     shallowEqual
   );
 
   const messageList = useSelector(
-    (state) => state.dialogsReducer.messages,
+    (state) => state.dialogs.messages,
     shallowEqual
   );
 

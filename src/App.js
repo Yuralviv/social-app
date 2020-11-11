@@ -2,7 +2,7 @@ import React from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Login from "./components/auth/login";
+import Login from "./components/auth/Login";
 import Dialogs from "./components/dialogs/Dialogs";
 import Header from "./components/header/Header";
 import NavBar from "./components/navBar/NavBar";
@@ -12,8 +12,7 @@ import PrivateRoute from "./guard/authRedirect";
 
 const App = () => {
 
-  const isAuth = useSelector((state) => state.authReducer.isAuth, shallowEqual);
-
+  const isAuth = useSelector((state) => state.auth.isAuth, shallowEqual);
 
   return (
     <div className="app-wrapper">

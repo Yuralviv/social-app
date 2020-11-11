@@ -5,7 +5,7 @@ import classes from "./MyPost.module.css";
 
 const MyPost = ({ id, post, likesCount }) => {
   const postList = useSelector(
-    (state) => state.profileReducer.posts,
+    (state) => state.profile.posts,
     shallowEqual
   );
   const postElements = postList.map((p) => (
