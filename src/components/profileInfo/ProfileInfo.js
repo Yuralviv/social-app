@@ -1,17 +1,19 @@
-// import classes from "*.module.css";
 import React from "react";
 import Spinner from "../common/Loader";
 import classes from "./ProfileInfo.module.css";
+import userPhoto from "../../assets/image/user.png";
 
 const ProfileInfo = ({ profile }) => {
   if (!profile) {
     return <Spinner />;
   }
+  const userPtoto =
+    profile.photos.large != null ? profile.photos.small : userPhoto;
 
   return (
     <div>
       <div className={classes.descriptionBlock}>
-        <img src={profile.photos.large} />
+        <img src={userPtoto} />
         <div>
           <div>fullname:</div> <span> {profile.fullName} </span>
         </div>
@@ -28,7 +30,7 @@ const ProfileInfo = ({ profile }) => {
             </li>
             <li>
               <span>vk: </span>
-              <a href="#">{profile.contacts.vk}</a>
+              <a href="#"> {profile.contacts.vk}</a>
             </li>
             <li>
               <span>twitter: </span>

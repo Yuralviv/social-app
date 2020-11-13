@@ -1,17 +1,18 @@
 .userPhoto {
-    width: 100px;
-   height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
-
 .pageNumber {
-    padding: 2px;
-    border: 1px solid grey;
-    cursor: pointer;
+  padding: 2px;
+  border: 1px solid grey;
 }
 
 .selectedPage {
-    font-weight: bold;
-    border-color: black;
-    cursor: pointer;
+  font-weight: bold;
+  border-color: black;
+}
+
+.list span {
+  cursor: pointer;
 }

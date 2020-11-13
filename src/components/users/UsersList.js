@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import * as axios from "axios";
 import UserItem from "./UserItem";
 import {
   setUsers,
@@ -15,28 +14,27 @@ import { getUsers, getUsersPage } from "../../api/users-api";
 const UsersList = () => {
   const dispatch = useDispatch();
 
-  const userList = useSelector((state) => state.userReducer.users);
+  const userList = useSelector((state) => state.user.users);
 
   const pageSize = useSelector(
-    (state) => state.userReducer.pageSize,
+    (state) => state.user.pageSize,
     shallowEqual
   );
 
   const totalUsersCount = useSelector(
-    (state) => state.userReducer.totalUsersCount,
+    (state) => state.user.totalUsersCount,
     shallowEqual
   );
 
   const currentPage = useSelector(
-    (state) => state.userReducer.currentPage,
+    (state) => state.user.currentPage,
     shallowEqual
   );
 
   const isFetching = useSelector(
-    (state) => state.userReducer.isFetching,
+    (state) => state.user.isFetching,
     shallowEqual
   );
-
 
   useEffect(() => {
     dispatch(toggleFetch(true));
@@ -77,7 +75,7 @@ const UsersList = () => {
   const checkLoader = isFetching ? <Spinner /> : null;
 
   return (
-    <div>
+    <div className={classes.list}>
       {checkLoader}
       <div>
         {pages.map((p) => (

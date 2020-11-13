@@ -1,21 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import DialogsItem from "./dialogsItem/DialogsItem";
 import classes from "./Dialogs.module.css";
 import DialogsMessage from "./dialogsMessage/DialogsMessage";
 import { useSelector, shallowEqual } from "react-redux";
-import { Redirect } from "react-router-dom";
-import Login from "../auth/login";
-import { privateRoute } from "../../guard/authRedirect";
 
 const Dialogs = (props) => {
-  
   const dialogsList = useSelector(
-    (state) => state.dialogsReducer.dialogs,
+    (state) => state.dialogs.dialogs,
     shallowEqual
   );
 
   const messageList = useSelector(
-    (state) => state.dialogsReducer.messages,
+    (state) => state.dialogs.messages,
     shallowEqual
   );
 

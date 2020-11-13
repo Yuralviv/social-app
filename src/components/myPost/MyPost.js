@@ -5,11 +5,11 @@ import classes from "./MyPost.module.css";
 
 const MyPost = ({ id, post, likesCount }) => {
   const postList = useSelector(
-    (state) => state.profileReducer.posts,
+    (state) => state.profile.posts,
     shallowEqual
   );
   const postElements = postList.map((p) => (
-    <Post key={p.id} post={p.post} likesCount={p.likesCount} />
+    <Post key={id} post={post} likesCount={likesCount} />
   ));
   return (
     <div className={classes.postsBlock}>
