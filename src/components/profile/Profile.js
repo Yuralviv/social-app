@@ -8,14 +8,17 @@ import ProfileInfo from "../profileInfo/ProfileInfo";
 import classes from "./Profile.module.css";
 
 const Profile = () => {
+  const myId = useSelector((state) => state.auth, shallowEqual);
   const dispatch = useDispatch();
+
+  console.log(myId.id);
 
   const profile = useSelector((state) => state.profile.profile, shallowEqual);
   const userId = useParams();
 
   useEffect(() => {
-    if (!userId.id) {
-      userId.id = 11823;
+    if (!userId) {
+      userId= myId;
     }
     axios
       .get("https://social-network.samuraijs.com/api/1.0/profile/" + userId.id)

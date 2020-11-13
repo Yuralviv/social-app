@@ -19,30 +19,21 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
- const getAuthUserData = async () =>  {
-  return authAPI.me().then((response) => {
-    if (response.resultCode === 0) {
-      // let { id, login, email } = response.data;
-      // dispatch(setUserData(response.data));
-    }
-  });
-};
-
 export const loginAuth = (email, password, rememberMe) => {
   return authAPI.login(email, password, rememberMe).then((response) => {
     if (response.resultCode === 0) {
       // success, get auth data
-      // dispatch(getAuthUserData(response.data));
+      window.location.reload();
     }
   });
 };
 
-export const logout = () => async (dispatch) => {
-  let response = await authAPI.logout();
-
-  if (response.data.resultCode === 0) {
-    dispatch(setUserData(null, null, null, false));
-  }
+export const logoutAuth = () => {
+  return authAPI.logout().then((response) => {
+    if (response.data.resultCode === 0) {
+      window.location.reload();
+    }
+  });
 };
 
 export default authReducer;

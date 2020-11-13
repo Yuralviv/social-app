@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import { setUserData } from "../../redux/action/authAction";
 import { authAPI } from "../../api/auth-api";
+import { logoutAuth } from "../../redux/reducer/authReducer";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Header = () => {
         <h3 className={classes.logo}>Social-App</h3>
       </div>
       <div className={classes.login}>
-        {isAuth ? login : <NavLink to={"/login"}>login</NavLink>}
+        {isAuth ? <div>{login} - <button onClick={logoutAuth} >logout </button> </div> : <NavLink to={"/login"}>login</NavLink>}
       </div>
     </header>
   );
