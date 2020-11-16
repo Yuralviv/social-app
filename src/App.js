@@ -21,11 +21,6 @@ const App = () => {
         <div className="app-wrapper-content">
           <Switch>
             <PrivateRoute
-              exact
-              path="/"
-              component="/profile/id?" />
-            
-            <PrivateRoute
               auth={isAuth}
               exact
               path="/dialogs"
@@ -37,6 +32,13 @@ const App = () => {
               path="/profile/:id"
               component={Profile}
             />
+            <PrivateRoute
+              auth={isAuth}
+              exact
+              path="/profile"
+              component={Profile}
+            />
+
             <PrivateRoute
               auth={isAuth}
               exact

@@ -14,20 +14,20 @@ const Profile = () => {
   console.log(myId.id);
 
   const profile = useSelector((state) => state.profile.profile, shallowEqual);
-  const userId = useParams();
+  let userId = useParams();
 
   useEffect(() => {
-    if (!userId) {
-      userId= myId;
+    if (!userId.id) {
+      userId = myId;
     }
+    console.log({ userId: userId, myId });
+
     axios
       .get("https://social-network.samuraijs.com/api/1.0/profile/" + userId.id)
       .then((response) => {
         dispatch(setUserProfile(response.data));
       });
-  }, []);
-
-  console.log(profile);
+  }, [userId]);
 
   return (
     <div className={classes.content}>
