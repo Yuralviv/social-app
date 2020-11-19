@@ -21,6 +21,12 @@ const App = () => {
         <div className="app-wrapper-content">
           <Switch>
             <PrivateRoute
+              exact
+              path="/"
+              render={() => <Redirect to={"/profile"} />}
+            />
+
+            <PrivateRoute
               auth={isAuth}
               exact
               path="/dialogs"
