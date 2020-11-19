@@ -10,16 +10,14 @@ import {
 import classes from "./Users.module.css";
 import Spinner from "../common/Loader";
 import { getUsers, getUsersPage } from "../../api/users-api";
+import Paginator from "../common/Paginator/Paginator";
 
 const UsersList = () => {
   const dispatch = useDispatch();
 
   const userList = useSelector((state) => state.user.users);
 
-  const pageSize = useSelector(
-    (state) => state.user.pageSize,
-    shallowEqual
-  );
+  const pageSize = useSelector((state) => state.user.pageSize, shallowEqual);
 
   const totalUsersCount = useSelector(
     (state) => state.user.totalUsersCount,
@@ -48,13 +46,12 @@ const UsersList = () => {
   const onPageChanged = (pageNumber) => {
     dispatch(setCurrentPage(pageNumber));
     dispatch(toggleFetch(true));
-    
-    getUsersPage(pageNumber, pageSize)
-      .then((data) => {
-        dispatch(toggleFetch(false));
-        dispatch(setUsers(data.items));
-      })
-  }
+
+    getUsersPage(pageNumber, pageSize).then((data) => {
+      dispatch(toggleFetch(false));
+      dispatch(setUsers(data.items));
+    });
+  };
 
   const pagesCount = Math.ceil(totalUsersCount / pageSize);
   const pages = [];
@@ -77,19 +74,12 @@ const UsersList = () => {
   return (
     <div className={classes.list}>
       {checkLoader}
-      <div>
-        {pages.map((p) => (
-          <span
-            key={p}
-            className={currentPage === p && classes.selectedPage}
-            onClick={() => {
-              onPageChanged(p);
-            }}
-          >
-            {` ${p}  `}
-          </span>
-        ))}
-      </div>
+      <Paginator
+        currentPage={currentPage}
+        onPageChanged={onPageChanged}
+        totalItemsCount={totalUsersCount}
+        pageSize={pageSize}
+      />
       <div>{userElements}</div>
     </div>
   );

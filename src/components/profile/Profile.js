@@ -11,8 +11,6 @@ const Profile = () => {
   const myId = useSelector((state) => state.auth, shallowEqual);
   const dispatch = useDispatch();
 
-  console.log(myId.id);
-
   const profile = useSelector((state) => state.profile.profile, shallowEqual);
   let userId = useParams();
 
@@ -20,10 +18,9 @@ const Profile = () => {
     if (!userId.id) {
       userId = myId;
     }
-    console.log({ userId: userId, myId });
 
     axios
-      .get("https://social-network.samuraijs.com/api/1.0/profile/" + userId.id)
+      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId.id}`)
       .then((response) => {
         dispatch(setUserProfile(response.data));
       });
